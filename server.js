@@ -22,7 +22,8 @@ app.use(cors({ origin: allowedOrigin }));
 app.use(express.json());
 
 // ── Static frontend ───────────────────────────────────────────────────────────
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname));
+
 
 // ── Normalised strike schema ──────────────────────────────────────────────────
 // {
@@ -203,7 +204,8 @@ app.get('/api/provider', (_req, res) => {
 
 // ── Fallback → index.html ─────────────────────────────────────────────────────
 app.get('*', (_req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
+
 });
 
 app.listen(PORT, '0.0.0.0', () => {
